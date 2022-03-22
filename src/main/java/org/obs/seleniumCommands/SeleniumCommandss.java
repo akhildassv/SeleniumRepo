@@ -1,8 +1,6 @@
 package org.obs.seleniumCommands;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,6 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+
 
 public class SeleniumCommandss {
     WebDriver driver;
@@ -39,7 +39,7 @@ public class SeleniumCommandss {
 
     @BeforeMethod
     public void setUp() {
-        testInitialize("Edge");
+        testInitialize("chrome");
     }
 
     @AfterMethod
@@ -73,6 +73,69 @@ public class SeleniumCommandss {
         WebElement account = driver.findElement(By.xpath("//div[@class='header-links']//a[@class='account']"));
         String actualemailID = account.getText();
         String expectedemailID = "akhildas710@gmail.com";
-        Assert.assertEquals(actualemailID, expectedemailID, "User login Faild");
+        Assert.assertEquals(actualemailID,expectedemailID,"login failed");
+
     }
+    @Test
+    public void verifyClear() throws InterruptedException {
+        driver.get("http://demowebshop.tricentis.com/");
+        WebElement login = driver.findElement(By.cssSelector("li>a[class='ico-login'"));
+        login.click();
+        WebElement email = driver.findElement(By.cssSelector("input#Email"));
+        email.sendKeys("akhildas710@gmail.com");
+        WebElement password = driver.findElement(By.cssSelector("input.password"));
+        password.sendKeys("akhildas");
+        email.clear();
+        WebElement check = driver.findElement(By.cssSelector("input[type='checkbox']"));
+        check.click();
+        WebElement submit = driver.findElement(By.cssSelector("div>input[type='submit']"));
+        submit.click();
+        WebElement text = driver.findElement(By.xpath("//div[@class='validation-summary-errors']//span"));
+        String actualText=text.getText();
+        String expectedText="Login was unsuccessful. Please correct the errors and try again.";
+        Assert.assertEquals(actualText,expectedText,"Clear command is not working");
+
+    }
+
+    @Test
+    public void verifyWebElementCommands()    {
+        driver.get("http://demowebshop.tricentis.com/");
+        WebElement login = driver.findElement(By.cssSelector("li>a[class='ico-login'"));
+        login.click();
+        WebElement submit = driver.findElement(By.cssSelector("div>input[type='submit'"));
+        /*Dimension dimension =submit.getSize();
+        int height=dimension.height;
+        int width=dimension.width;
+        System.out.println("Height="+height);
+        System.out.println("Width="+width);*/
+        Point point=submit.getLocation();
+        int x=point.x;
+        int y=point.y;
+        System.out.println("X cordinate of login button="+x);
+        System.out.println("Y cordinate of login button="+y);
+        String ActualLoginButton=submit.getAttribute("value");
+        String ExpectedLoginButton="Log in";
+        Assert.assertEquals(ActualLoginButton,ExpectedLoginButton,"Not correct text");
+    }
+
+    @Test
+    public void verifySearchButton(){
+        driver.get("http://demowebshop.tricentis.com/");
+        WebElement search = driver.findElement(By.xpath("//input[@class='button-1 search-box-button']"));
+        Dimension dimension =search.getSize();
+        int height=dimension.height;
+        int width=dimension.width;
+        System.out.println("Height="+height);
+        System.out.println("Width="+width);
+        Point point=search.getLocation();
+        int x=point.x;
+        int y=point.y;
+        System.out.println("X cordinate of login button="+x);
+        System.out.println("Y cordinate of login button="+y);
+        String ActualLoginButton=search.getAttribute("value");
+        String ExpectedLoginButton="Search";
+        Assert.assertEquals(ActualLoginButton,ExpectedLoginButton,"Not correct text");
+    }
+
+
 }
