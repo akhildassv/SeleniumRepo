@@ -52,7 +52,7 @@ public class SeleniumBasics
         driver.navigate().refresh();
 
         //To close the webpage
-        driver.close();
+        //driver.close();
        // driver.quit();
     }
 }

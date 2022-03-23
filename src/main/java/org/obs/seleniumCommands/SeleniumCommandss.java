@@ -74,8 +74,8 @@ public class SeleniumCommandss {
         String actualemailID = account.getText();
         String expectedemailID = "akhildas710@gmail.com";
         Assert.assertEquals(actualemailID,expectedemailID,"login failed");
-
     }
+
     @Test
     public void verifyClear() throws InterruptedException {
         driver.get("http://demowebshop.tricentis.com/");
@@ -94,7 +94,6 @@ public class SeleniumCommandss {
         String actualText=text.getText();
         String expectedText="Login was unsuccessful. Please correct the errors and try again.";
         Assert.assertEquals(actualText,expectedText,"Clear command is not working");
-
     }
 
     @Test
@@ -136,6 +135,4 @@ public class SeleniumCommandss {
         String ExpectedLoginButton="Search";
         Assert.assertEquals(ActualLoginButton,ExpectedLoginButton,"Not correct text");
     }
-
-
 }

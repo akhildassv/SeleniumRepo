@@ -1,6 +1,6 @@
 package org.obs.seleniumCommands;
 
-import com.sun.deploy.security.SelectableSecurityManager;
+
 import org.obs.seleniumbasics.Utility;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -72,8 +73,8 @@ public class DemoShopRegistrationTestNG {
         last.sendKeys("Das");
 
         //INVOKING Utility Method
-        Utility utility=new Utility();
-        String randMail=utility.getUtility();
+        Utility utility = new Utility();
+        String randMail = utility.getUtility();
         WebElement email = driver.findElement(By.xpath("//input[@id='Email']"));
         email.sendKeys(randMail);
 
@@ -81,7 +82,11 @@ public class DemoShopRegistrationTestNG {
         password.sendKeys("akhil123");
         WebElement password1 = driver.findElement(By.xpath("//input[@id='ConfirmPassword']"));
         password1.sendKeys("akhil123");
-        WebElement register =driver.findElement(By.xpath("//input[@id='register-button']"));
+        WebElement register = driver.findElement(By.xpath("//input[@id='register-button']"));
         register.click();
+        WebElement result = driver.findElement(By.xpath("//div[@class='result']"));
+        String actualText = result.getText();
+        String expectedText = "Your registration completed";
+        Assert.assertEquals(actualText, expectedText, "Not Registered");
     }
 }

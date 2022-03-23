@@ -8,7 +8,8 @@ public class Utility {
         StringBuilder s1 = new StringBuilder();
         Random rnd = new Random();
         while (s1.length() < 8) { // length of the random string.
-            int index = (int) (rnd.nextFloat() * chars.length());
+            //int index = (int) (rnd.nextFloat() * chars.length());
+             int index = rnd.nextInt(chars.length());
             s1.append(chars.charAt(index));
         }
         String s1Str = s1.toString();
