@@ -1,8 +1,10 @@
 package org.obs.seleniumCommands;
 
 
+import com.sun.deploy.security.SelectableSecurityManager;
 import org.obs.seleniumbasics.Utility;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotSelectableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -43,12 +45,15 @@ public class DemoShopRegistrationTestNG {
 
     public void selectGender(String gender) {
         List<WebElement> options = driver.findElements(By.xpath("//label[contains(@for,'gender')]"));
-        for (WebElement option : options) {
-            if (option.getText().equalsIgnoreCase(gender)) ;
-            {
-                option.click();
+        for (int i = 0; i < options.size(); i++) {
+            if (options.get(i).getText().equalsIgnoreCase(gender)) {
+                options.get(i).click();
             }
         }
+        /*for (WebElement option : options) {
+         //if (option.getText().equalsIgnoreCase(gender)) ;
+             option.click();
+              }*/
     }
 
     @BeforeMethod
@@ -66,7 +71,7 @@ public class DemoShopRegistrationTestNG {
         driver.get("http://demowebshop.tricentis.com/");
         WebElement login = driver.findElement(By.cssSelector("li>a[class='ico-register']"));
         login.click();
-        selectGender("male");
+        selectGender("Male");
         WebElement first = driver.findElement(By.xpath("//input[@id='FirstName']"));
         first.sendKeys("Akhil");
         WebElement last = driver.findElement(By.xpath("//input[@id='LastName']"));
