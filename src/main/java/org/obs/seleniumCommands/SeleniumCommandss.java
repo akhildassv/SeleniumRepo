@@ -1,5 +1,6 @@
 package org.obs.seleniumCommands;
 
+import org.asynchttpclient.util.Assertions;
 import org.obs.seleniumbasics.Utility;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,7 +12,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.List;
+import java.util.*;
 
 
 public class SeleniumCommandss {
@@ -63,7 +64,7 @@ public class SeleniumCommandss {
 
     @AfterMethod
     public void tearDown() {
-        //driver.close();
+        driver.close();
     }
 
 
@@ -247,8 +248,7 @@ public class SeleniumCommandss {
     }
 
     @Test
-    public void verifySimpleAlert()
-    {
+    public void verifySimpleAlert() {
         driver.get("https://demoqa.com/alerts");
         WebElement alert1 = driver.findElement(By.id("alertButton"));
         alert1.click();
@@ -270,7 +270,6 @@ public class SeleniumCommandss {
     }
 
 
-
     @Test
     public void verifyDropdown() {
         driver.navigate().to("https://demo.guru99.com/test/newtours/");
@@ -280,15 +279,16 @@ public class SeleniumCommandss {
             if (value.equalsIgnoreCase("REGISTER")) {
                 option.click();
                 break;
-            }}
-        WebElement dropdown= driver.findElement(By.xpath("//select[@name='country']"));
-        Select select=new Select(dropdown);
-       // select.selectByVisibleText("INDIA");
+            }
+        }
+        WebElement dropdown = driver.findElement(By.xpath("//select[@name='country']"));
+        Select select = new Select(dropdown);
+        // select.selectByVisibleText("INDIA");
         //select.selectByValue("INDIA");
-       //select.selectByIndex(20);
-        List<WebElement> dropdownValues=select.getOptions();
+        //select.selectByIndex(20);
+        List<WebElement> dropdownValues = select.getOptions();
         System.out.println(dropdownValues.size());
-        for (int i=0;i<dropdownValues.size();i++){
+        for (int i = 0; i < dropdownValues.size(); i++) {
             //System.out.println(dropdownValues.get(i).getText());
         }
     }
@@ -305,4 +305,29 @@ public class SeleniumCommandss {
         System.out.println(alert.getText());
         alert.accept();
     }
+
+    @Test
+    public void verifyMultipleWindow() {
+        driver.get("https://demo.guru99.com/popup.php");
+        String parentWindow=driver.getWindowHandle();
+        System.out.println(parentWindow);
+        WebElement text = driver.findElement(By.xpath("//p//a"));
+        text.click();
+        Set<String> windows=driver.getWindowHandles();
+        Iterator<String> iterator=windows.iterator();
+        while(iterator.hasNext()){
+            System.out.println(iterator.next());
+            String newWindow=iterator.next();
+            if(! newWindow.equals(parentWindow)){
+                driver.switchTo().window(newWindow);
+                WebElement email = driver.findElement(By.name("emailid"));
+                email.sendKeys("akhildas710@gmail.com");
+                WebElement submit = driver.findElement(By.name("btnLogin"));
+                submit.click();
+                driver.close();
+            }
+        }
+        driver.switchTo().window(parentWindow);
+    }
 }
+

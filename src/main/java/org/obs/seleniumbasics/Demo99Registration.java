@@ -36,17 +36,6 @@ public class Demo99Registration {
         WebElement pin = driver.findElement(By.xpath("//input[@name='postalCode']"));
         pin.sendKeys("629152");
         driver.findElement(By.xpath("//option[@value='INDIA']")).click();
-
-        /*
-        WebElement select=driver.findElement(By.xpath("//select[@name='country']"));
-        List<WebElement> options =select.findElements(By.tagName("option"));
-        for (WebElement option : options) {
-            if("INDIA".equals(option.getText().trim()));{
-                option.click();
-            }
-        }*/
-
-
         //email invoking
         Utility utility=new Utility();
         String randMail=utility.getUtility();
