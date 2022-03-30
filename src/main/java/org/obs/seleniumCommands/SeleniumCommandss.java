@@ -6,12 +6,14 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import javax.naming.ldap.Control;
 import java.util.*;
 
 
@@ -64,7 +66,7 @@ public class SeleniumCommandss {
 
     @AfterMethod
     public void tearDown() {
-        driver.close();
+        //driver.close();
     }
 
 
@@ -328,6 +330,142 @@ public class SeleniumCommandss {
             }
         }
         driver.switchTo().window(parentWindow);
+    }
+
+    @Test
+    public void verifyFramesinSelenium() {
+        driver.get("https://demoqa.com/frames");
+        //driver.switchTo().frame(3);
+        //driver.switchTo().frame("frame1");
+        WebElement frameElement=driver.findElement(By.id("frame1"));
+        driver.switchTo().frame(frameElement);
+        WebElement heading= driver.findElement(By.id("sampleHeading"));
+        String sampleHeading= heading.getText();
+        System.out.println(sampleHeading);
+    }
+
+    public void singleColorSelection(String color){
+        WebElement dropdown = driver.findElement(By.id("single-input-field"));
+        Select select = new Select(dropdown);
+        select.selectByVisibleText(color);
+    }
+
+    @Test
+    public void verifySelectedColor() {
+        driver.get("https://selenium.obsqurazone.com/select-input.php");
+        singleColorSelection("Yellow");
+        String actualColor="Selected Color : Yellow";
+        WebElement printcolor = driver.findElement(By.id("message-one"));
+        String expectedColor=printcolor.getText();
+        Assert.assertEquals(actualColor,expectedColor,"Printed color is not same");
+    }
+
+    @Test
+    public void verifyMultipleSelectedColor()  {
+        driver.get("https://selenium.obsqurazone.com/select-input.php");
+        WebElement dropdown = driver.findElement(By.id("multi-select-field"));
+        Select select = new Select(dropdown);
+        List<WebElement> t =select.getOptions();
+        Actions actions = new Actions(driver);
+        actions.keyDown(Keys.LEFT_CONTROL)
+                .click(t.get(0))
+                .click(t.get(1))
+                .keyUp(Keys.LEFT_CONTROL)
+                .build()
+                .perform();
+        WebElement allSelect = driver.findElement(By.id("button-all"));
+        allSelect.click();
+        WebElement allSelectMessage = driver.findElement(By.id("message-two"));
+        String actualMessage="All selected colors are : Red,Yellow";
+        String expectedMessaage=allSelectMessage.getText();
+        System.out.println(expectedMessaage);
+       Assert.assertEquals(actualMessage,expectedMessaage,"Printed colors are not same");
+    }
+
+    @Test
+    public void verifyFirstSelectedColor()  {
+        driver.get("https://selenium.obsqurazone.com/select-input.php");
+        WebElement dropdown = driver.findElement(By.id("multi-select-field"));
+        Select select = new Select(dropdown);
+        List<WebElement> t =select.getOptions();
+        Actions actions = new Actions(driver);
+        actions.keyDown(Keys.LEFT_CONTROL)
+                .click(t.get(0))
+                .click(t.get(1))
+                .keyUp(Keys.LEFT_CONTROL)
+                .build()
+                .perform();
+        WebElement firstSelect = driver.findElement(By.id("button-first"));
+        firstSelect.click();
+        WebElement allSelectMessage = driver.findElement(By.id("message-two"));
+        String expectedMessaage=allSelectMessage.getText();
+        WebElement first=select.getFirstSelectedOption();
+        System.out.println(first.getText());
+        String actualMessage="First selected color is : "+first.getText();
+        System.out.println(expectedMessaage);
+        Assert.assertEquals(actualMessage,expectedMessaage,"Printed First color is not correct");
+    }
+
+    @Test
+    public void verifyDeSelectedColor()  {
+        driver.get("https://selenium.obsqurazone.com/select-input.php");
+        WebElement dropdown = driver.findElement(By.id("multi-select-field"));
+        Select select = new Select(dropdown);
+        List<WebElement> t =select.getOptions();
+        Actions actions = new Actions(driver);
+        actions.keyDown(Keys.LEFT_CONTROL)
+                .click(t.get(0))
+                .click(t.get(1))
+                .keyUp(Keys.LEFT_CONTROL)
+                .build()
+                .perform();
+        select.deselectByIndex(0);
+        List<WebElement> selected=select.getAllSelectedOptions();
+        for(WebElement i:selected){
+            System.out.println(i.getText());
+        }
+        WebElement allSelect = driver.findElement(By.id("button-all"));
+        allSelect.click();
+        WebElement allSelectMessage = driver.findElement(By.id("message-two"));
+       // String actualMessage="All selected colors are : Yellow";
+        String expectedMessaage=allSelectMessage.getText();
+        System.out.println(expectedMessaage);
+        //Assert.assertEquals(actualMessage,expectedMessaage,"Printed colors are not same");
+    }
+
+    @Test
+    public void verifyDeSelectedColorNew() throws InterruptedException {
+        driver.get("https://selenium.obsqurazone.com/select-input.php");
+        WebElement dropdown = driver.findElement(By.id("multi-select-field"));
+        Select select = new Select(dropdown);
+        select.selectByIndex(1);
+        Thread.sleep(2000);
+        select.deselectByIndex(1);
+        WebElement allSelect = driver.findElement(By.id("button-all"));
+        allSelect.click();
+        String actualMessage="All selected colors are : ";
+        WebElement allSelectMessage = driver.findElement(By.id("message-two"));
+        String expectedMessaage=allSelectMessage.getText();
+        System.out.println(expectedMessaage);
+        Assert.assertEquals(actualMessage,expectedMessaage,"Needs to press CTRL+click Key for Deselect");
+
+    }
+
+    @Test
+    public void VerifyColorOptions(){
+        driver.get("https://selenium.obsqurazone.com/select-input.php");
+        WebElement dropdown = driver.findElement(By.id("multi-select-field"));
+        Select select = new Select(dropdown);
+        List<WebElement> selected=select.getOptions();
+        List<String> expectedList = new ArrayList<>();
+        for(WebElement i:selected){
+            expectedList.add(i.getText());
+        }
+        List<String> actualList= new ArrayList<>();
+        actualList.add("Red");
+        actualList.add("Yellow");
+        actualList.add("Green");
+        Assert.assertEquals(actualList,expectedList,"List is not Matching");
     }
 }
 
