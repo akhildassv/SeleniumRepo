@@ -312,16 +312,16 @@ public class SeleniumCommandss {
     @Test
     public void verifyMultipleWindow() {
         driver.get("https://demo.guru99.com/popup.php");
-        String parentWindow=driver.getWindowHandle();
+        String parentWindow = driver.getWindowHandle();
         System.out.println(parentWindow);
         WebElement text = driver.findElement(By.xpath("//p//a"));
         text.click();
-        Set<String> windows=driver.getWindowHandles();
-        Iterator<String> iterator=windows.iterator();
-        while(iterator.hasNext()){
+        Set<String> windows = driver.getWindowHandles();
+        Iterator<String> iterator = windows.iterator();
+        while (iterator.hasNext()) {
             System.out.println(iterator.next());
-            String newWindow=iterator.next();
-            if(! newWindow.equals(parentWindow)){
+            String newWindow = iterator.next();
+            if (!newWindow.equals(parentWindow)) {
                 driver.switchTo().window(newWindow);
                 WebElement email = driver.findElement(By.name("emailid"));
                 email.sendKeys("akhildas710@gmail.com");
@@ -338,14 +338,14 @@ public class SeleniumCommandss {
         driver.get("https://demoqa.com/frames");
         //driver.switchTo().frame(3);
         //driver.switchTo().frame("frame1");
-        WebElement frameElement=driver.findElement(By.id("frame1"));
+        WebElement frameElement = driver.findElement(By.id("frame1"));
         driver.switchTo().frame(frameElement);
-        WebElement heading= driver.findElement(By.id("sampleHeading"));
-        String sampleHeading= heading.getText();
+        WebElement heading = driver.findElement(By.id("sampleHeading"));
+        String sampleHeading = heading.getText();
         System.out.println(sampleHeading);
     }
 
-    public void singleColorSelection(String color){
+    public void singleColorSelection(String color) {
         WebElement dropdown = driver.findElement(By.id("single-input-field"));
         Select select = new Select(dropdown);
         select.selectByVisibleText(color);
@@ -355,18 +355,18 @@ public class SeleniumCommandss {
     public void verifySelectedColor() {
         driver.get("https://selenium.obsqurazone.com/select-input.php");
         singleColorSelection("Yellow");
-        String actualColor="Selected Color : Yellow";
+        String actualColor = "Selected Color : Yellow";
         WebElement printcolor = driver.findElement(By.id("message-one"));
-        String expectedColor=printcolor.getText();
-        Assert.assertEquals(actualColor,expectedColor,"Printed color is not same");
+        String expectedColor = printcolor.getText();
+        Assert.assertEquals(actualColor, expectedColor, "Printed color is not same");
     }
 
     @Test
-    public void verifyMultipleSelectedColor()  {
+    public void verifyMultipleSelectedColor() {
         driver.get("https://selenium.obsqurazone.com/select-input.php");
         WebElement dropdown = driver.findElement(By.id("multi-select-field"));
         Select select = new Select(dropdown);
-        List<WebElement> t =select.getOptions();
+        List<WebElement> t = select.getOptions();
         Actions actions = new Actions(driver);
         actions.keyDown(Keys.LEFT_CONTROL)
                 .click(t.get(0))
@@ -377,20 +377,19 @@ public class SeleniumCommandss {
         WebElement allSelect = driver.findElement(By.id("button-all"));
         allSelect.click();
         WebElement allSelectMessage = driver.findElement(By.id("message-two"));
-        String actualMessage="All selected colors are : Red,Yellow";
-        String expectedMessaage=allSelectMessage.getText();
+        String actualMessage = "All selected colors are : Red,Yellow";
+        String expectedMessaage = allSelectMessage.getText();
         System.out.println(expectedMessaage);
-       Assert.assertEquals(actualMessage,expectedMessaage,"Printed colors are not same");
+        Assert.assertEquals(actualMessage, expectedMessaage, "Printed colors are not same");
     }
 
 
-
     @Test
-    public void verifyFirstSelectedColor()  {
+    public void verifyFirstSelectedColor() {
         driver.get("https://selenium.obsqurazone.com/select-input.php");
         WebElement dropdown = driver.findElement(By.id("multi-select-field"));
         Select select = new Select(dropdown);
-        List<WebElement> t =select.getOptions();
+        List<WebElement> t = select.getOptions();
         Actions actions = new Actions(driver);
         actions.keyDown(Keys.LEFT_CONTROL)
                 .click(t.get(0))
@@ -401,12 +400,12 @@ public class SeleniumCommandss {
         WebElement firstSelect = driver.findElement(By.id("button-first"));
         firstSelect.click();
         WebElement allSelectMessage = driver.findElement(By.id("message-two"));
-        String expectedMessaage=allSelectMessage.getText();
-        WebElement first=select.getFirstSelectedOption();
+        String expectedMessaage = allSelectMessage.getText();
+        WebElement first = select.getFirstSelectedOption();
         System.out.println(first.getText());
-        String actualMessage="First selected color is : "+first.getText();
+        String actualMessage = "First selected color is : " + first.getText();
         System.out.println(expectedMessaage);
-        Assert.assertEquals(actualMessage,expectedMessaage,"Printed First color is not correct");
+        Assert.assertEquals(actualMessage, expectedMessaage, "Printed First color is not correct");
     }
 
 
@@ -418,51 +417,51 @@ public class SeleniumCommandss {
         select.selectByIndex(1);
         Thread.sleep(2000);
         //dropdown.sendKeys(Keys.CONTROL+"A");
-       // select.selectByIndex(2);
+        // select.selectByIndex(2);
         //Thread.sleep(2000);
         //select.deselectByIndex(1);
         WebElement allSelect = driver.findElement(By.id("button-all"));
         allSelect.click();
-        String actualMessage="All selected colors are : ";
+        String actualMessage = "All selected colors are : ";
         WebElement allSelectMessage = driver.findElement(By.id("message-two"));
-        String expectedMessaage=allSelectMessage.getText();
+        String expectedMessaage = allSelectMessage.getText();
         System.out.println(expectedMessaage);
-      //  Assert.assertEquals(actualMessage,expectedMessaage,"Needs to press CTRL+click Key for Deselect");
+        //  Assert.assertEquals(actualMessage,expectedMessaage,"Needs to press CTRL+click Key for Deselect");
 
     }
 
     @Test
-    public void VerifyColorOptions(){
+    public void VerifyColorOptions() {
         driver.get("https://selenium.obsqurazone.com/select-input.php");
         WebElement dropdown = driver.findElement(By.id("multi-select-field"));
         Select select = new Select(dropdown);
-        List<WebElement> selected=select.getOptions();
+        List<WebElement> selected = select.getOptions();
         List<String> expectedList = new ArrayList<>();
-        for(WebElement i:selected){
+        for (WebElement i : selected) {
             expectedList.add(i.getText());
         }
-        List<String> actualList= new ArrayList<>();
+        List<String> actualList = new ArrayList<>();
         actualList.add("Red");
         actualList.add("Yellow");
         actualList.add("Green");
-        Assert.assertEquals(actualList,expectedList,"List is not Matching");
+        Assert.assertEquals(actualList, expectedList, "List is not Matching");
     }
 
     @Test
-    public void verifyRightClick(){
+    public void verifyRightClick() {
         driver.get("https://demo.guru99.com/test/simple_context_menu.html");
         WebElement rightClick = driver.findElement(By.xpath("//*[@id=\"authentication\"]/span"));
-        Actions action=new Actions(driver);
+        Actions action = new Actions(driver);
         action.contextClick(rightClick)
                 .build()
                 .perform();
     }
 
     @Test
-    public void verifyDoubleClick(){
+    public void verifyDoubleClick() {
         driver.get("https://demo.guru99.com/test/simple_context_menu.html");
         WebElement doubleClick = driver.findElement(By.xpath("//*[@id=\"authentication\"]/button"));
-        Actions action=new Actions(driver);
+        Actions action = new Actions(driver);
         action.doubleClick(doubleClick)
                 .build()
                 .perform();
@@ -471,19 +470,58 @@ public class SeleniumCommandss {
         alert.accept();
     }
 
+    public void selectMainMenu(String menuItem) {
+        //List<WebElement> menu= driver.findElements(By.xpath("//ul//a[contains(text(),'Main')]"));
+        List<WebElement> menu = driver.findElements(By.xpath("//ul//a"));
+        System.out.println(menu.size());
+        for (WebElement option : menu) {
+            String value = option.getText();
+            if (value.equalsIgnoreCase(menuItem)) {
+                Actions action = new Actions(driver);
+                action.moveToElement(option).build().perform();
+                //System.out.println(value);
+            }
+        }
+    }
+
+    public void selectSubMenu(String subItem) {
+        List<WebElement> subMenu = driver.findElements(By.xpath("//ul//li//a[contains(text(),'Sub')]"));
+        System.out.println(subMenu.size());
+        for (WebElement option : subMenu) {
+            String value = option.getText();
+            if (value.equalsIgnoreCase(subItem)) {
+                Actions action = new Actions(driver);
+                action.moveToElement(option).build().perform();
+                System.out.println(value);
+            }
+        }
+    }
+
     @Test
     public void verifyMouseOver() {
         driver.get("https://demoqa.com/menu/");
-        List<WebElement> menu= driver.findElements(By.xpath("//ul//a[contains(text(),'Main')]"));
-        System.out.println(menu.size());
-        for(WebElement menuDis:menu){
-            System.out.println(menuDis.getText());
+        selectMainMenu("Main Item 2");
+
+    }
+
+    public void selectmenu(String item) {
+        List<WebElement> options = driver.findElements(By.xpath("//tr[@class='mouseOut']//a"));
+        for (WebElement option : options) {
+            String value = option.getText();
+            if (value.equalsIgnoreCase(item)) {
+                Actions action = new Actions(driver);
+                action.moveToElement(option).build().perform();
+                //action.moveToElement(option,100,100).build().perform();
+                //action.moveToElement(option).click().build().perform();
+                System.out.println(value);
+            }
         }
-        List<WebElement> subMenu= driver.findElements(By.xpath("//ul//li//a[contains(text(),'Sub')]"));
-        System.out.println(subMenu.size());
-        for(WebElement menuDis:subMenu){
-            System.out.println(menuDis.getText());
-        }
+    }
+
+    @Test
+    public void verifyDemotoolMouseOver() {
+        driver.get("https://demo.guru99.com/test/newtours/");
+        selectmenu("Hotels");
     }
 }
 
