@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
 
 import java.util.List;
 
@@ -47,4 +48,5 @@ public class Demo99Registration {
         password1.sendKeys("akhil123");
         driver.findElement(By.xpath("//input[@name='submit']")).click();
     }
+
 }
