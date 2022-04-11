@@ -1,6 +1,7 @@
 package org.obs.seleniumCommands;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -14,8 +15,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -25,12 +30,14 @@ import javax.swing.plaf.basic.BasicSplitPaneUI;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 public class SeleniumCommandss {
@@ -84,7 +91,12 @@ public class SeleniumCommandss {
     }
 
     @AfterMethod
-    public void tearDown() {
+    public void tearDown(ITestResult result) throws IOException {
+        if(ITestResult.FAILURE==result.getStatus()) {
+            TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+            File screenshot = takesScreenshot.getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshot, new File("./ScreenShots/" + result.getName() + ".png"));
+        }
         //driver.close();
     }
 
@@ -98,9 +110,13 @@ public class SeleniumCommandss {
         Assert.assertEquals(actualTitle, expectedTitle, "invalid page title");
     }
 
-    @Test
+    @Test  //Page WAITING
     public void verifylogin() {
         driver.get("http://demowebshop.tricentis.com/");
+        //Page load wait
+        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+
         WebElement login = driver.findElement(By.cssSelector("li>a[class='ico-login'"));
         login.click();
         WebElement email = driver.findElement(By.cssSelector("input#Email"));
@@ -109,8 +125,15 @@ public class SeleniumCommandss {
         password.sendKeys("akhildas");
         WebElement check = driver.findElement(By.cssSelector("input[type='checkbox'"));
         check.click();
+
+        //explicit wait
+        WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[value='Log in']")));
+
         WebElement submit = driver.findElement(By.cssSelector("div>input[type='submit'"));
         submit.click();
+        //implicit wait
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         WebElement account = driver.findElement(By.xpath("//div[@class='header-links']//a[@class='account']"));
         String actualemailID = account.getText();
         String expectedemailID = "akhildas710@gmail.com";
@@ -641,6 +664,62 @@ public class SeleniumCommandss {
         JavascriptExecutor js=(JavascriptExecutor)driver;
         js.executeScript("document.getElementById('newsletter-email').value='suryasoma@gmi.com'");
         js.executeScript("document.getElementById('newsletter-subscribe-button').click()");
+    }
+
+    @Test
+    public void verifyScrool(){
+        driver.get("https://demo.guru99.com/test/guru99home/");
+        JavascriptExecutor js=(JavascriptExecutor)driver;
+        js.executeScript("window.scrollBy(0,1000)");
+    }
+
+    @Test
+    public void verifyTablesHeaders(){
+        driver.get("https://www.w3schools.com/html/html_tables.asp");
+        List<WebElement> heading=driver.findElements(By.xpath("//table[@id='customers']//th"));
+        List<String> actualList = new ArrayList<>();
+        for (WebElement i : heading) {
+            actualList.add(i.getText());
+        }
+        List<String> expectedList=new ArrayList<>();
+        expectedList.add("Company");
+        expectedList.add("Contact");
+        expectedList.add("Country");
+        Assert.assertEquals(actualList,expectedList,"List not matching");
+    }
+
+    @Test
+    public void verifyValuesInTable() {
+        driver.get("https://www.w3schools.com/html/html_tables.asp");
+        List<WebElement> rowElement=driver.findElements(By.xpath("//table[@id='customers']//tr"));
+        List<String> actualData=new ArrayList<>();
+        for(int i=0;i<=rowElement.size();i++){
+            List<WebElement> rowValues=driver.findElements(By.xpath("//table[@id='customers']//tr["+i+"]//td"));
+            if(rowValues.get(0).getText().equals("Island Trading")){
+                for(int j=0;j<rowValues.size();j++){
+                    actualData.add(rowValues.get(j).getText());
+                }
+            }
+        }
+        List<String> expectedData=new ArrayList<>();
+        expectedData.add("Island Trading");
+        expectedData.add("Helen Bennett");
+        expectedData.add("UK");
+    }
+
+    @Test
+    public void verifyTable() throws IOException {
+        driver.get("https://www.w3schools.com/html/html_tables.asp");
+        List<WebElement> rowElement=driver.findElements(By.xpath("//table[@id='customers']//tr"));
+        for(int i=2;i<=rowElement.size();i++){
+            List<WebElement> rowValues=driver.findElements(By.xpath("//table[@id='customers']//tr["+i+"]//td"));
+                for(int j=0;j<rowValues.size();j++){
+                    ExcelUtility excel=new ExcelUtility();
+                    String actualCell=rowValues.get(j).getText();
+                    String expectedCell=excel.table((i-1),j);
+                    Assert.assertEquals(actualCell,expectedCell,"Not equal");
+                }
+        }
     }
 }
 
