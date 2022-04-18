@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Suite">
+    <test name="Functional Test">
+        <classes>
+            <class name="org.obs.seleniumCommands.SeleniumCommandss">
+                <methods>
+                    <include name="verifyHomepageTitle"/>
+                    <include name="verifylogin"/>
+                    <include name="verifyClear"/>
+                    <include name="verifyWebElementCommands"/>
+                    <include name="verifySearchButton"/>testng.xml
+                    <include name="verifyRegistration"/>
+                    <include name="verifyElementPresent"/>
+                    <include name="verifyElementEnabled"/>
+                    <include name="verifyCheckbox"/>
+                    <include name="verifyPromtAlert"/>
+                    <include name="verifySimpleAlert"/>
+                    <include name="verifyConfirmationAlert"/>
+                    <include name="verifyDropdown"/>
+                    <include name="demoDeleteAlert"/>
+                    <include name="verifyMultipleWindow"/>
+                    <include name="verifyFramesinSelenium"/>
+                    <include name="verifySelectedColor"/>
+                    <include name="verifyMultipleSelectedColor"/>
+                    <include name="verifyFirstSelectedColor"/>
+                    <include name="verifyDeSelectedColor"/>
+                    <include name="VerifyColorOptions"/>
+                    <include name="verifyRightClick"/>
+                    <include name="verifyDoubleClick"/>
+                    <include name="verifyMouseOver"/>
+                    <include name="verifyDemotoolMouseOver"/>
+                    <include name="verifyDragAndDrop"/>
+                    <include name="verifyDragAndDropBy"/>
+                    <include name="verifyKeyboardActions"/>
+                    <include name="verifyFileUpload"/>
+                    <include name="verifyLoginNew"/>
+                    <include name="fileuploadUsingRobotclass"/>
+                    <include name="verifyJavaScriptExecuter"/>
+                    <include name="verifyScrool"/>
+                    <include name="verifyTablesHeaders"/>
+                    <include name="verifyValuesInTable"/>
+                    <include name="verifyTable"/>
+                    <include name="verifyDataFromExcel"/>
+                </methods>
+            </class>
+            <class name="org.obs.testNGCommands.TestNG1">
+                <methods>
+                    <include name="testCase1"/>
+                    <include name="testCase2"/>
+                </methods>
+            </class>
+            <class name="org.obs.testNGCommands.TestNG2">
+                <methods>
+                    <include name="testCase3"/>
+                    <include name="testCase4"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

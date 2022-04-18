@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <button class="button" id="button">Switch Retro Theme</button> <!-- button -->
+      <br/>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
+          <img class="collapse-all-icon" src="collapseall.gif">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" class="navigator-link" panel-name="suite-Smoke_suite">
+              <span class="suite-name border-failed">Smoke suite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="test-xml-Smoke_suite">
+                    <span>C:\Users\lenovo\IdeaProjects\seleniumbasicss\paralleltestng.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="testlist-Smoke_suite">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="group-Smoke_suite">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="times-Smoke_suite">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="reporter-Smoke_suite">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-Smoke_suite">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="chronological-Smoke_suite">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">2 methods, 1 failed,   1 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Smoke_suite" class="hide-methods failed suite-Smoke_suite"> (hide)</a> <!-- hide-methods failed suite-Smoke_suite -->
+                      <a href="#" panel-name="suite-Smoke_suite" class="show-methods failed suite-Smoke_suite"> (show)</a> <!-- show-methods failed suite-Smoke_suite -->
+                    </span>
+                    <div class="method-list-content failed suite-Smoke_suite">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Smoke_suite" title="org.obs.seleniumCommands.SeleniumCommandss" hash-for-method="verifylogin">verifylogin</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Smoke_suite -->
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Smoke_suite" class="hide-methods passed suite-Smoke_suite"> (hide)</a> <!-- hide-methods passed suite-Smoke_suite -->
+                      <a href="#" panel-name="suite-Smoke_suite" class="show-methods passed suite-Smoke_suite"> (show)</a> <!-- show-methods passed suite-Smoke_suite -->
+                    </span>
+                    <div class="method-list-content passed suite-Smoke_suite">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Smoke_suite" title="org.obs.seleniumCommands.SeleniumCommandss" hash-for-method="verifyHomepageTitle">verifyHomepageTitle</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Smoke_suite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Smoke_suite" class="panel Smoke_suite">
+          <div class="suite-Smoke_suite-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">org.obs.seleniumCommands.SeleniumCommandss</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifylogin">
+                  </a> <!-- verifylogin -->
+                  <span class="method-name">verifylogin</span>
+                  <div class="stack-trace">org.openqa.selenium.NoSuchSessionException: invalid session id
+Build info: version: &apos;4.1.2&apos;, revision: &apos;9a5a329c5a&apos;
+System info: host: &apos;DESKTOP-18B12HC&apos;, ip: &apos;192.168.1.6&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_202&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [26646cdba9f8410634d34f98edfc5853, clickElement {id=29564e38-0ce8-4def-ade2-010a44f86052}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 100.0.4896.88, chrome: {chromedriverVersion: 100.0.4896.60 (6a5d10861ce8..., userDataDir: C:\Users\lenovo\AppData\Loc...}, goog:chromeOptions: {debuggerAddress: localhost:54149}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:54149/devtoo..., se:cdpVersion: 100.0.4896.88, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on WINDOWS (26646cdba9f8410634d34f98edfc5853)] -&gt; css selector: li&gt;a[class=&apos;ico-login&apos;]
+Session ID: 26646cdba9f8410634d34f98edfc5853
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:558)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:251)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:77)
+	at org.obs.seleniumCommands.SeleniumCommandss.verifylogin(SeleniumCommandss.java:122)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+... Removed 16 stack frames
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke_suite-class-failed -->
+          <div class="suite-Smoke_suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">org.obs.seleniumCommands.SeleniumCommandss</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="verifyHomepageTitle">
+                  </a> <!-- verifyHomepageTitle -->
+                  <span class="method-name">verifyHomepageTitle</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Smoke_suite-class-passed -->
+        </div> <!-- panel Smoke_suite -->
+        <div panel-name="test-xml-Smoke_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\lenovo\IdeaProjects\seleniumbasicss\paralleltestng.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite guice-stage=&quot;DEVELOPMENT&quot; name=&quot;Smoke suite&quot;&gt;
+  &lt;test thread-count=&quot;2&quot; name=&quot;Smoke Test&quot; parallel=&quot;methods&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;org.obs.seleniumCommands.SeleniumCommandss&quot;&gt;
+        &lt;methods&gt;
+          &lt;include name=&quot;verifyHomepageTitle&quot;/&gt;
+          &lt;include name=&quot;verifylogin&quot;/&gt;
+        &lt;/methods&gt;
+      &lt;/class&gt; &lt;!-- org.obs.seleniumCommands.SeleniumCommandss --&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Smoke Test --&gt;
+&lt;/suite&gt; &lt;!-- Smoke suite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Smoke_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Smoke suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">Smoke Test (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Smoke_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Smoke suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Smoke_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Smoke suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Smoke_suite');
+function tableData_Smoke_suite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(2);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'verifylogin')
+data.setCell(0, 2, 'org.obs.seleniumCommands.SeleniumCommandss')
+data.setCell(0, 3, 31578);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'verifyHomepageTitle')
+data.setCell(1, 2, 'org.obs.seleniumCommands.SeleniumCommandss')
+data.setCell(1, 3, 28281);
+window.suiteTableData['Smoke_suite']= { tableData: data, tableDiv: 'times-div-Smoke_suite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 59 seconds</span>
+              <div id="times-div-Smoke_suite">
+              </div> <!-- times-div-Smoke_suite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Smoke_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Smoke suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Smoke_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">35 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">org.obs.seleniumCommands.SeleniumCommandss</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">verifyWebElementCommands</span>
+                <br/>
+                <span class="ignored-method-name">verifyClear</span>
+                <br/>
+                <span class="ignored-method-name">verifyPromtAlert</span>
+                <br/>
+                <span class="ignored-method-name">verifyDataFromExcel</span>
+                <br/>
+                <span class="ignored-method-name">verifyRegistration</span>
+                <br/>
+                <span class="ignored-method-name">verifyCheckbox</span>
+                <br/>
+                <span class="ignored-method-name">verifyFirstSelectedColor</span>
+                <br/>
+                <span class="ignored-method-name">verifySimpleAlert</span>
+                <br/>
+                <span class="ignored-method-name">verifyRightClick</span>
+                <br/>
+                <span class="ignored-method-name">verifyFileUpload</span>
+                <br/>
+                <span class="ignored-method-name">VerifyColorOptions</span>
+                <br/>
+                <span class="ignored-method-name">verifyScrool</span>
+                <br/>
+                <span class="ignored-method-name">verifyMultipleWindow</span>
+                <br/>
+                <span class="ignored-method-name">demoDeleteAlert</span>
+                <br/>
+                <span class="ignored-method-name">verifyLoginNew</span>
+                <br/>
+                <span class="ignored-method-name">verifyDragAndDropBy</span>
+                <br/>
+                <span class="ignored-method-name">verifyTablesHeaders</span>
+                <br/>
+                <span class="ignored-method-name">verifyKeyboardActions</span>
+                <br/>
+                <span class="ignored-method-name">verifyDropdown</span>
+                <br/>
+                <span class="ignored-method-name">verifyDragAndDrop</span>
+                <br/>
+                <span class="ignored-method-name">verifyMouseOver</span>
+                <br/>
+                <span class="ignored-method-name">verifySelectedColor</span>
+                <br/>
+                <span class="ignored-method-name">verifyMultipleSelectedColor</span>
+                <br/>
+                <span class="ignored-method-name">verifyValuesInTable</span>
+                <br/>
+                <span class="ignored-method-name">verifyElementEnabled</span>
+                <br/>
+                <span class="ignored-method-name">verifyElementPresent</span>
+                <br/>
+                <span class="ignored-method-name">verifyTable</span>
+                <br/>
+                <span class="ignored-method-name">verifyDemotoolMouseOver</span>
+                <br/>
+                <span class="ignored-method-name">verifyDoubleClick</span>
+                <br/>
+                <span class="ignored-method-name">verifyJavaScriptExecuter</span>
+                <br/>
+                <span class="ignored-method-name">verifyDeSelectedColor</span>
+                <br/>
+                <span class="ignored-method-name">fileuploadUsingRobotclass</span>
+                <br/>
+                <span class="ignored-method-name">verifyConfirmationAlert</span>
+                <br/>
+                <span class="ignored-method-name">verifyFramesinSelenium</span>
+                <br/>
+                <span class="ignored-method-name">verifySearchButton</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Smoke_suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">org.obs.seleniumCommands.SeleniumCommandss</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">verifyHomepageTitle</span>
+                <span class="method-start">30130 ms</span>
+              </div> <!-- test-method -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">verifylogin</span>
+                <span class="method-start">30157 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown([TestResult name=verifyHomepageTitle status=SUCCESS method=SeleniumCommandss.verifyHomepageTitle()[p...)</span>
+                <span class="method-start">58451 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method after">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">tearDown([TestResult name=verifylogin status=FAILURE method=SeleniumCommandss.verifylogin()[pri:0, instance:o...)</span>
+                <span class="method-start">61785 ms</span>
+              </div> <!-- configuration-method after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
+</html>

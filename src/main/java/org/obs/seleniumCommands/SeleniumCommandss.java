@@ -7,6 +7,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.asynchttpclient.util.Assertions;
 import org.obs.seleniumbasics.ExcelUtility;
+import org.obs.seleniumbasics.TableUtility;
 import org.obs.seleniumbasics.Utility;
 import org.openqa.selenium.*;
 import org.openqa.selenium.Dimension;
@@ -97,7 +98,7 @@ public class SeleniumCommandss {
             File screenshot = takesScreenshot.getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshot, new File("./ScreenShots/" + result.getName() + ".png"));
         }
-        //driver.close();
+        driver.close();
     }
 
 
@@ -721,5 +722,19 @@ public class SeleniumCommandss {
                 }
         }
     }
+    @Test
+    public void  verifyDataFromExcel() throws IOException {
+        driver.get("https://www.w3schools.com/html/html_tables.asp");
+        ExcelUtility excelUtility = new ExcelUtility();
+        List<ArrayList<String>> expected = excelUtility.readDatasFromExcel("\\src\\main\\resources\\TestData.xlsx", "Table");
+         //System.out.println(expected);
+        List<WebElement> rowElement = driver.findElements(By.xpath("//table[@id='customers']//tr"));
+        List<WebElement> columnElement = driver.findElements(By.xpath("//table[@id='customers']//tr//td"));
+        TableUtility tableUtility=new TableUtility();
+        List<ArrayList<String>> actual =tableUtility.getGridData(rowElement,columnElement);
+        //System.out.println(actual);
+        Assert.assertEquals(actual,expected,"Not equal table");
+    }
+
 }
 

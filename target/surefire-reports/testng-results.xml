@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Grouping Test Suite" duration-ms="187" started-at="2022-04-18T00:52:01 IST" finished-at="2022-04-18T00:52:01 IST">
+    <groups>
+      <group name="smoke">
+        <method signature="GroupingTest.testCase3()[pri:0, instance:org.obs.testNGCommands.GroupingTest@59906517]" name="testCase3" class="org.obs.testNGCommands.GroupingTest"/>
+        <method signature="GroupingTest.testCase4()[pri:0, instance:org.obs.testNGCommands.GroupingTest@59906517]" name="testCase4" class="org.obs.testNGCommands.GroupingTest"/>
+      </group> <!-- smoke -->
+      <group name="sanity">
+        <method signature="GroupingTest.testCase1()[pri:0, instance:org.obs.testNGCommands.GroupingTest@59906517]" name="testCase1" class="org.obs.testNGCommands.GroupingTest"/>
+        <method signature="GroupingTest.testCase2()[pri:0, instance:org.obs.testNGCommands.GroupingTest@59906517]" name="testCase2" class="org.obs.testNGCommands.GroupingTest"/>
+        <method signature="GroupingTest.testCase3()[pri:0, instance:org.obs.testNGCommands.GroupingTest@59906517]" name="testCase3" class="org.obs.testNGCommands.GroupingTest"/>
+      </group> <!-- sanity -->
+    </groups>
+    <test name="Grouping Testing" duration-ms="187" started-at="2022-04-18T00:52:01 IST" finished-at="2022-04-18T00:52:01 IST">
+      <class name="org.obs.testNGCommands.GroupingTest">
+        <test-method status="PASS" signature="testCase1()[pri:0, instance:org.obs.testNGCommands.GroupingTest@59906517]" name="testCase1" duration-ms="16" started-at="2022-04-18T00:52:01 IST" finished-at="2022-04-18T00:52:01 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCase1 -->
+        <test-method status="PASS" signature="testCase2()[pri:0, instance:org.obs.testNGCommands.GroupingTest@59906517]" name="testCase2" duration-ms="0" started-at="2022-04-18T00:52:01 IST" finished-at="2022-04-18T00:52:01 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCase2 -->
+        <test-method status="PASS" signature="testCase3()[pri:0, instance:org.obs.testNGCommands.GroupingTest@59906517]" name="testCase3" duration-ms="0" started-at="2022-04-18T00:52:01 IST" finished-at="2022-04-18T00:52:01 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCase3 -->
+        <test-method status="PASS" signature="testCase4()[pri:0, instance:org.obs.testNGCommands.GroupingTest@59906517]" name="testCase4" duration-ms="16" started-at="2022-04-18T00:52:01 IST" finished-at="2022-04-18T00:52:01 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCase4 -->
+      </class> <!-- org.obs.testNGCommands.GroupingTest -->
+    </test> <!-- Grouping Testing -->
+  </suite> <!-- Grouping Test Suite -->
+</testng-results>

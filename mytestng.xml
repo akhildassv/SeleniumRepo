@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Regression Suite">
+    <test name="Functional Test">
+        <classes>
+            <class name="org.obs.testNGCommands.TestNG1">
+                <methods>
+                    <exclude name="testCase1"/>
+                    <include name="testCase2"/>
+                </methods>
+            </class>
+            <class name="org.obs.testNGCommands.TestNG2">
+                <methods>
+                    <include name="testCase3"/>
+                    <include name="testCase4"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
