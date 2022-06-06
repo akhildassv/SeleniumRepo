@@ -25,6 +25,7 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import javax.naming.ldap.Control;
 import javax.swing.plaf.basic.BasicSplitPaneUI;
@@ -245,7 +246,7 @@ public class SeleniumCommandss {
         login.click();
         WebElement submit = driver.findElement(By.cssSelector("div>input[type='submit']"));
         Boolean result = submit.isDisplayed();
-        System.out.println(result);
+         System.out.println(result);
         Assert.assertTrue(result, "Submit button not displayed");
     }
 
@@ -326,6 +327,7 @@ public class SeleniumCommandss {
                 break;
             }
         }
+
         WebElement dropdown = driver.findElement(By.xpath("//select[@name='country']"));
         Select select = new Select(dropdown);
         // select.selectByVisibleText("INDIA");
@@ -363,6 +365,7 @@ public class SeleniumCommandss {
         while (iterator.hasNext()) {
             System.out.println(iterator.next());
             String newWindow = iterator.next();
+            System.out.println(newWindow);
             if (!newWindow.equals(parentWindow)) {
                 driver.switchTo().window(newWindow);
                 WebElement email = driver.findElement(By.name("emailid"));
@@ -380,11 +383,15 @@ public class SeleniumCommandss {
         driver.get("https://demoqa.com/frames");
         //driver.switchTo().frame(3);
         //driver.switchTo().frame("frame1");
+        List<WebElement> iframes = driver.findElements(By.xpath("//iframe"));
+        // print your number of frames
+        System.out.println(iframes.size());
         WebElement frameElement = driver.findElement(By.id("frame1"));
         driver.switchTo().frame(frameElement);
         WebElement heading = driver.findElement(By.id("sampleHeading"));
         String sampleHeading = heading.getText();
         System.out.println(sampleHeading);
+
     }
 
     public void singleColorSelection(String color) {
@@ -435,6 +442,7 @@ public class SeleniumCommandss {
         Actions actions = new Actions(driver);
         actions.keyDown(Keys.LEFT_CONTROL)
                 .click(t.get(0))
+
                 .click(t.get(1))
                 .keyUp(Keys.LEFT_CONTROL)
                 .build()
@@ -495,6 +503,7 @@ public class SeleniumCommandss {
         WebElement rightClick = driver.findElement(By.xpath("//*[@id=\"authentication\"]/span"));
         Actions action = new Actions(driver);
         action.contextClick(rightClick)
+
                 .build()
                 .perform();
     }
@@ -638,7 +647,23 @@ public class SeleniumCommandss {
         String expectedemailID = "akhildas710@gmail.com";
         Assert.assertEquals(actualemailID, expectedemailID, "User login Failed");
 
+
     }
+
+    @Test
+    public void softAssert(){
+        SoftAssert softAssertion= new SoftAssert();
+        System.out.println("softAssert Method Was Started");
+        softAssertion.assertTrue(true);
+        System.out.println("softAssert Method Was Executed");
+    }
+    @Test
+    public void hardAssert(){
+        System.out.println("hardAssert Method Was Started");
+        Assert.assertTrue(false);
+        System.out.println("hardAssert Method Was Executed");
+    }
+
 
     @Test
     public void fileuploadUsingRobotclass() throws AWTException {
