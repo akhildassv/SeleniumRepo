@@ -39,7 +39,7 @@ public class TestNG1 {
 
     @Test
     public void testCase1(){
-        System.out.println("Test case 1 executed");
+        System.out.println("Test case 1 executed updated directli by repo");
     }
     @Test
     public void testCase2(){
