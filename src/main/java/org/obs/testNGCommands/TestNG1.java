@@ -39,7 +39,8 @@ public class TestNG1 {
 
     @Test
     public void testCase1(){
-        System.out.println("Test case 1 executed");
+        System.out.println("Test case 1 executed and Updated by Manu Karakkonam");
+        
     }
     @Test
     public void testCase2(){
